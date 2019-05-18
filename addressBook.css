@@ -1,0 +1,69 @@
+body {
+    background-color: lightgrey;
+    font-family: 'Raleway';
+}
+
+#container {
+    text-align: center;
+}
+
+#contacts {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#listItem {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    min-width: 50%;
+    max-width: 70%;
+    padding: 0.5rem;
+    margin: 1rem;
+    background-color: white;
+    border-radius: 5px;
+    min-height: 15rem;
+    text-transform: uppercase;
+}
+
+img {
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+#seeMoreButton {
+  color: #fff !important;
+  text-transform: uppercase;
+  background: #60a3bc;
+  width: 50%;
+  padding: 0.5rem;
+  margin: 5px auto;
+  border-radius: 50px;
+  display: inline-block;
+  border: none;
+}
+
+@media only screen and (max-width: 900px){
+    #contacts {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 750px){
+    #contacts {
+        grid-template-columns: 1fr 1fr;
+    }
+    #listItem {
+        min-width: 45%;
+    }
+}
+
+@media only screen and (max-width: 475px){
+    #contacts {
+        grid-template-columns: 1fr;
+    }
+
+    #listItem {
+        width: 35%;
+    }
+}
