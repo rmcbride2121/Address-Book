@@ -1,6 +1,9 @@
-window.onload = function() {
-  get();
-};
+"use strict";
+const assert = require("assert");
+
+// window.onload = function() {
+//   get();
+// };
 
 let newArray = null;
 function get() {
@@ -38,12 +41,13 @@ function get() {
 
         //when <button> is clicked, adds a <p> element inside each <li>
         let boolean = true;
-        button.addEventListener("click", (e) =>{
+        button.addEventListener("click", e => {
           //prevents button from being clicked more than once
-          if (boolean == false){
+          if (boolean == false) {
             return;
           }
           boolean = false;
+
           //creates a <p> element
           let ageText = document.createElement("p");
 
@@ -53,7 +57,9 @@ function get() {
           //creates text for each <p> from api
           let age = document.createTextNode("Age: " + currentValue.dob.age);
           let br = document.createElement("br");
-          let zip = document.createTextNode("Zip Code: " + currentValue.location.postcode);
+          let zip = document.createTextNode(
+            "Zip Code: " + currentValue.location.postcode
+          );
 
           //adds text to each <p>
           ageText.appendChild(age);
@@ -62,7 +68,7 @@ function get() {
 
           //adds <p> inside <li>
           createLi.appendChild(ageText);
-        })
+        });
 
         //adds the image url from api to <img>
         image.src = currentValue.picture.large;
@@ -72,7 +78,9 @@ function get() {
 
         //adds names from api inside each <li>
         createLi.appendChild(
-          document.createTextNode(currentValue.name.first + " " + currentValue.name.last)
+          document.createTextNode(
+            currentValue.name.first + " " + currentValue.name.last
+          )
         );
         //adds <button> inside <li>
         createLi.appendChild(button);
@@ -82,3 +90,20 @@ function get() {
       });
     });
 }
+
+describe("getRandomUser", () => {
+  it("tests fetch and random users endpoint", () => {
+    const testFetch = url => {
+      assert(url === "https://randomuser.me/api/?results=20");
+      return new Promise(function() {});
+    };
+    getRandomUser(testFetch, "random user");
+  });
+  it("tests 10 random users", () => {
+    const testFetch = url => {
+      assert(url === "https://randomuser.me/api/?results=20");
+      return new Promise(function() {});
+    };
+    getRandomUser(testFetch, "api/?results=20");
+  });
+});
