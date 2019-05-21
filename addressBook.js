@@ -104,6 +104,6 @@ describe("getRandomUser", () => {
       assert(url === "https://randomuser.me/api/?results=20");
       return new Promise(function() {});
     };
-    getRandomUser(testFetch, "api/?results=20");
+    getRandomUser(testFetch, "?results=20");
   });
 });
